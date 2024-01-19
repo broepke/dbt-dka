@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: deadpool
+    description: Source data from the Deadpool
+    database: deadpool
+    schema: prod
+    tables:
+      - name: players
+      - name: picks

@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: hubspot
+    description: Source data from HubSpot
+    database: fivetran
+    schema: hubspot
+    tables:
+      - name: contact
+      - name: company
+      - name: contact_company
+      - name: product
+      - name: deal
+      - name: deal_company
+      - name: deal_contact
+      - name: deal_pipeline
+      - name: deal_pipeline_stage
+      - name: deal_stage
+      - name: line_item
+      - name: line_item_deal

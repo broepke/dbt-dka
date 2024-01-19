@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: google_analytics
+    description: Source data from Google Analytics
+    database: fivetran
+    schema: google_analytics
+    tables:
+      - name: accounts
+      - name: conversion_events
+      - name: demo_country
+      - name: engagement_events
+      - name: engagement_page_title_scree_class
+      - name: engagement_path
+      - name: tech_browser
+      - name: traffic_source_medium
+      - name: user_source_medium

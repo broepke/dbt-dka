@@ -1,0 +1,48 @@
+version: 2
+
+seeds:
+  - name: seed_nndb_wiki_pages
+    config:
+      +column_types: { id: varchar, wiki_page: varchar, status_code: number }
+  - name: seed_nndb_death_causes
+    config:
+      +column_types:
+        {
+          id: varchar,
+          wiki_page: varchar,
+          wiki_cause_of_death: varchar,
+          wiki_death_summary: varchar,
+          wiki_categorized_cause: varchar,
+        }
+  - name: seed_nndb_alive_causes
+    config:
+      +column_types:
+        {
+          id: varchar,
+          wiki_page: varchar,
+          wiki_health_issues: varchar,
+          wiki_categorized_cause: varchar,
+        }
+  - name: seed_nndb_predictions
+    config:
+      +column_types:
+        {
+          id: varchar,
+          name: varchar,
+          age: number,
+          is_deceased: boolean,
+          prediction: number,
+        }
+  - name: seed_nndb_wiki_id
+    config:
+      +column_types: { id: varchar, wiki_page: varchar, wiki_id: varchar }
+  - name: seed_nndb_wiki_dates
+    config:
+      +column_types:
+        {
+          id: varchar,
+          wiki_id: varchar,
+          death_date: date,
+          birth_date: date,
+          age: number,
+        }

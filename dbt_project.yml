@@ -1,0 +1,86 @@
+name: 'data_knows_all'
+version: '1.0.0'
+config-version: 2
+
+profile: 'default'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+vars:
+  github_source:
+    github_database: fivetran
+    # github_schema: github
+  github__using_repo_team: false
+
+seeds:
+  data_knows_all:
+    +enabled: true
+    +database: staging
+
+models:
+  data_knows_all:
+    marts:
+      deadpool:
+        +enabled: true
+        +materialized: view
+        +database: deadpool
+      google_analytics:
+        +enabled: true
+        +materialized: view
+        +database: analytics
+      hubspot:
+          +enabled: true
+          +materialized: view
+          +database: analytics
+      nndb:
+          +enabled: true
+          +materialized: table
+          +database: deadpool
+      notion:
+          +enabled: true
+          +materialized: view
+          +database: analytics
+    staging:
+      deadpool:
+        +enabled: true
+        +materialized: view
+        +database: staging
+      google_analytics:
+        +enabled: true
+        +materialized: view
+        +database: staging
+      hubspot:
+        +enabled: true
+        +materialized: view
+        +database: staging
+      notion:
+        +enabled: true
+        +materialized: view
+        +database: staging
+      nndb:
+        +enabled: true
+        +materialized: view
+        +database: staging
+    intermediate:
+      deadpool:
+        +enabled: true
+        +materialized: view
+        +database: staging
+      notion:
+        +enabled: true
+        +materialized: view
+        +database: staging
+  github_source:
+    +database: staging
+  github:
+    +database: analytics
