@@ -50,6 +50,10 @@ models:
           +enabled: true
           +materialized: view
           +database: analytics
+      stripe:
+          +enabled: true
+          +materialized: view
+          +database: analytics
     staging:
       deadpool:
         +enabled: true
@@ -63,11 +67,15 @@ models:
         +enabled: true
         +materialized: view
         +database: staging
+      nndb:
+        +enabled: true
+        +materialized: view
+        +database: staging
       notion:
         +enabled: true
         +materialized: view
         +database: staging
-      nndb:
+      stripe:
         +enabled: true
         +materialized: view
         +database: staging
