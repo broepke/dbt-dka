@@ -7,3 +7,6 @@ sources:
     schema: stripe
     tables:
       - name: payout
+      - name: balance_transaction
+      - name: charge
+      - name: bank_account
