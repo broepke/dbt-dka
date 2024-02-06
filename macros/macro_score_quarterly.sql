@@ -20,6 +20,7 @@
             and 50 + 100 - p.age = max_scores.max_score
         where p.year = {{ year }} and p.death_date is not null
         group by p.picked_by, quarter
-        order by p.picked_by, quarter
+        order by score desc
+        limit 1
 
 {% endmacro %}
