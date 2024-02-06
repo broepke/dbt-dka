@@ -10,7 +10,7 @@ transform as (
         pi.name,
         pi.birth_date,
         pi.death_date,
-        to_decimal(coalesce(pi.age, 0)) as age,
+        pi.age,
         concat(pl.first_name || ' ' || pl.last_name) as player,
         pi.timestamp as draft_date
     from {{ ref('stg_deadpool__players') }} pl
