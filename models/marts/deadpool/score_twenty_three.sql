@@ -9,14 +9,14 @@ select
     b.player,
     b.email,
     b.year,
-    b.score as base_score,
-    to_decimal(coalesce(f.score, 0)) as first_blood,
-    to_decimal(coalesce(l.score, 0)) as last_blood,
     to_decimal(b.score)
     + to_decimal(coalesce(f.score, 0))
-    + to_decimal(coalesce(l.score, 0)) as score
+    + to_decimal(coalesce(l.score, 0)) as total,
+    b.score as base_score,
+    to_decimal(coalesce(f.score, 0)) as first_blood,
+    to_decimal(coalesce(l.score, 0)) as last_blood
 from base_scoring b
 left join first_blood f on b.id = f.id
 left join last_blood l on b.id = l.id
 where year = 2023
-order by score desc
+order by total desc
