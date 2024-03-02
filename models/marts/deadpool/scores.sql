@@ -16,7 +16,7 @@ with
     q_four as ({{ score_quarterly("2024-10-01", "2024") }})
 
 select
-    b.id,
+    b.id as player_id,
     to_decimal(b.score)
     + to_decimal(coalesce(f.score, 0))
     + to_decimal(coalesce(l.score, 0))
