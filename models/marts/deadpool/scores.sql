@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 with
     base_scoring as (select * from {{ ref("int_deadpool__score_base_scoring") }}),
 
