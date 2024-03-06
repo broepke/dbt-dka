@@ -36,11 +36,20 @@ with
             pid.id = 'notion%3A%2F%2Ftasks%2Ftask_to_project_relation'
             and pp.id = 'title'
     ),
-    price_per as (
+    price_per_actuals as (
 
         select page_id, formula:number::number(16) as total_value
         from {{ ref("stg_notion__page_property") }}
         where total_value is not null
+        and id = 'fz%3Dg'
+
+    ),
+    price_per_estimates as (
+
+        select page_id, formula:number::number(16) as total_value
+        from {{ ref("stg_notion__page_property") }}
+        where total_value is not null
+        and id = 'xNR%5D'
 
     ),
     status as (
@@ -69,7 +78,8 @@ select
     pj.project,
     e.estimates,
     a.actuals,
-    pp.total_value,
+    ppe.total_value as total_value_estimates,
+    ppa.total_value as total_value_actuals,
     pt.product,
     st.status
 from all_pages p
@@ -78,7 +88,8 @@ join task_estimates e on e.page_id = p.page_id
 join task_actuals a on a.page_id = p.page_id
 join product_type as pt on pt.page_id = p.page_id
 join project as pj on pj.page_id = p.page_id
-join price_per as pp on pp.page_id = p.page_id
+join price_per_estimates as ppe on ppe.page_id = p.page_id
+join price_per_actuals as ppa on ppa.page_id = p.page_id
 join status as st on st.page_id = p.page_id
 join task_id as tk on tk.page_id = p.page_id
 order by pj.project
