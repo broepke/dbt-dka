@@ -6,8 +6,9 @@ select
     race,
     occupation,
     nationality,
+    birth_date,
     age,
     risk_factors,
     wiki_categorized_cause,
-    case when died is null then 0 else 1 end as is_dead
+    case when death_date is null then 0 else 1 end as is_dead
 from source
