@@ -33,7 +33,7 @@ select
     {% for risk in risks %}
 
     max(case when value = '{{ risk | replace("'", "") }}' 
-    then 1 else 0 end) as {{ risk | replace("'", "") | replace("č", "c")  | replace("ť", "t")  | replace("é", "e") | replace(" ", "_") | replace("-", "_") | lower }}
+    then 1 else 0 end) as {{ risk | replace("'", "") | replace(" ", "_") | replace("-", "_") | lower }}
 
     {%- if not loop.last -%}, {%- endif -%}
 
