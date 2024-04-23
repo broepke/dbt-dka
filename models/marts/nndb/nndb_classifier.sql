@@ -6,7 +6,7 @@ select
     race,
     occupation,
     nationality,
-    birth_date,
+    -- birth_date,
     age,
     risk_factors,
     wiki_categorized_cause,
