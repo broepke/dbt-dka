@@ -88,6 +88,10 @@ models:
         +enabled: true
         +materialized: view
         +database: staging
+      nndb:
+        +enabled: true
+        +materialized: view
+        +database: staging
   github_source:
     +database: staging
   github:
