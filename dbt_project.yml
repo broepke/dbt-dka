@@ -51,7 +51,7 @@ models:
           +materialized: view
           +database: analytics
       stripe:
-          +enabled: true
+          +enabled: false
           +materialized: view
           +database: analytics
     staging:
@@ -76,7 +76,7 @@ models:
         +materialized: view
         +database: staging
       stripe:
-        +enabled: true
+        +enabled: false
         +materialized: view
         +database: staging
     intermediate:
@@ -93,6 +93,8 @@ models:
         +materialized: view
         +database: staging
   github_source:
+    +enabled: false
     +database: staging
   github:
+    +enabled: false
     +database: analytics
