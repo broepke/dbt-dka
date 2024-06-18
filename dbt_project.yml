@@ -55,7 +55,7 @@ models:
           +materialized: view
           +database: analytics
       quickbooks:
-          +enabled: false
+          +enabled: true
           +materialized: view
           +database: analytics
     staging:
