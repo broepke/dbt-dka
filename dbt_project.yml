@@ -54,6 +54,10 @@ models:
           +enabled: false
           +materialized: view
           +database: analytics
+      quickbooks:
+          +enabled: false
+          +materialized: view
+          +database: analytics
     staging:
       deadpool:
         +enabled: true
@@ -79,6 +83,10 @@ models:
         +enabled: false
         +materialized: view
         +database: staging
+      quickbooks:
+        +enabled: true
+        +materialized: view
+        +database: staging
     intermediate:
       deadpool:
         +enabled: true
@@ -89,6 +97,10 @@ models:
         +materialized: view
         +database: staging
       nndb:
+        +enabled: true
+        +materialized: view
+        +database: staging
+      quickbooks:
         +enabled: true
         +materialized: view
         +database: staging
