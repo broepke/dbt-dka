@@ -100,10 +100,6 @@ models:
         +enabled: true
         +materialized: view
         +database: staging
-      quickbooks:
-        +enabled: true
-        +materialized: view
-        +database: staging
   github_source:
     +enabled: false
     +database: staging
