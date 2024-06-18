@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: quickbooks
+    description: Quickbooks data from Fivetran
+    database: fivetran
+    schema: quickbooks
+    tables:
+      - name: invoice
+      - name: vendor
