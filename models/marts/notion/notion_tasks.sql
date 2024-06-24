@@ -40,9 +40,9 @@ with
     proj_date as (
         
         select page_id, date:start::date as date
-        from ref("stg_notion__page_property") }}
+        from {{ ref("stg_notion__page_property") }}
         where id = 'notion%3A%2F%2Ftasks%2Fdue_date_property'
-    )
+    ),
 
     price_per_actuals as (
 
