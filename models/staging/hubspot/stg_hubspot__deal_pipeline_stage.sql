@@ -12,7 +12,7 @@ renamed as (
         stage_id,
         pipeline_id,
         label,
-        active,
+        -- active,
         display_order,
         created_at,
         updated_at,
