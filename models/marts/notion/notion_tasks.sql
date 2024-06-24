@@ -36,6 +36,14 @@ with
             pid.id = 'notion%3A%2F%2Ftasks%2Ftask_to_project_relation'
             and pp.id = 'title'
     ),
+
+    proj_date as (
+        
+        select page_id, date:start::date as date
+        from ref("stg_notion__page_property") }}
+        where id = 'notion%3A%2F%2Ftasks%2Fdue_date_property'
+    )
+
     price_per_actuals as (
 
         select page_id, formula:number::number(16) as total_value
@@ -76,6 +84,7 @@ select
     tk.task_id,
     p.page_title,
     pj.project,
+    pd.date,
     e.estimates,
     a.actuals,
     ppe.total_value as total_value_estimates,
@@ -88,6 +97,7 @@ join task_estimates e on e.page_id = p.page_id
 join task_actuals a on a.page_id = p.page_id
 join product_type as pt on pt.page_id = p.page_id
 join project as pj on pj.page_id = p.page_id
+join proj_date as pd on pd.page_id = p.page_id
 join price_per_estimates as ppe on ppe.page_id = p.page_id
 join price_per_actuals as ppa on ppa.page_id = p.page_id
 join status as st on st.page_id = p.page_id
