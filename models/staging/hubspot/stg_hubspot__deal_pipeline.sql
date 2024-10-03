@@ -11,7 +11,6 @@ renamed as (
     select
         pipeline_id,
         label,
-        active,
         display_order,
         created_at,
         updated_at,
