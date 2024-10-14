@@ -54,10 +54,6 @@ models:
           +enabled: false
           +materialized: view
           +database: analytics
-      pivots:
-          +enabled: false
-          +materialized: view
-          +database: analytics
       quickbooks:
           +enabled: true
           +materialized: view
