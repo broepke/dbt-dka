@@ -54,6 +54,10 @@ models:
           +enabled: false
           +materialized: view
           +database: analytics
+      pivots:
+          +enabled: false
+          +materialized: view
+          +database: analytics
       quickbooks:
           +enabled: true
           +materialized: view
@@ -76,6 +80,10 @@ models:
         +materialized: view
         +database: staging
       notion:
+        +enabled: true
+        +materialized: view
+        +database: staging
+      pivots:
         +enabled: true
         +materialized: view
         +database: staging
