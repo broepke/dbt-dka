@@ -46,3 +46,6 @@ seeds:
           birth_date: date,
           age: number,
         }
+  - name: seed_pivot_example
+    config:
+      +column_types: { user: varchar, product: varchar, count: number }
