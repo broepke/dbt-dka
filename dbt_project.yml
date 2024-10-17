@@ -50,6 +50,10 @@ models:
           +enabled: true
           +materialized: view
           +database: analytics
+      pivots:
+          +enabled: true
+          +materialized: view
+          +database: analytics
       stripe:
           +enabled: false
           +materialized: view
