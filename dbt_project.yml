@@ -2,6 +2,9 @@ name: 'data_knows_all'
 version: '1.0.0'
 config-version: 2
 
+dbt-cloud:
+    project-id: 298058
+
 profile: 'default'
 
 model-paths: ["models"]
