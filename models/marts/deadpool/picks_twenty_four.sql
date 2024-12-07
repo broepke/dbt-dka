@@ -10,6 +10,7 @@ with source as (
 transform as (
 
     select
+        pe.id,
         pe.name,
         pe.birth_date,
         pe.death_date,
