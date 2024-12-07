@@ -1,7 +1,7 @@
 select 
     pl.id,
     pl.email, 
-    pl.year_two as draft_order, 
+    do.draft_order, 
     count(pe.id) as pick_count
 from {{ ref("stg_deadpool__players") }} pl
 left join
