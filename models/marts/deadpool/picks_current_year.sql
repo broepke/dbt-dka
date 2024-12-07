@@ -3,7 +3,7 @@ with source as (
     select pp.player_id, pe.*, pp.timestamp
     from {{ ref('stg_deadpool__people') }} pe
     join {{ ref('stg_deadpool__player_picks') }} pp
-    on pe.id = pp.people_id and pp.year = 2024
+    on pe.id = pp.people_id and pp.year = year(current_date)
     
 ),
 
