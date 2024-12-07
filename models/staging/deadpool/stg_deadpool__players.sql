@@ -13,8 +13,6 @@ renamed as (
         first_name,
         last_name,
         email,
-        year_one,
-        year_two,
         opt_in,
         sms
 
