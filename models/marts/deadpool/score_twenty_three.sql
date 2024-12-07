@@ -6,6 +6,7 @@ with
     last_blood as ({{ score_first_last_blood("max", "2023") }})
 
 select
+    b.id,
     b.player,
     b.email,
     b.year,
