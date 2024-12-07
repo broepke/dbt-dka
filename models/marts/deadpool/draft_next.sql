@@ -12,7 +12,7 @@ with
         left join
             {{ ref("stg_deadpool__player_picks") }} pp
             on pl.id = pp.player_id
-            and pp.year = 2024
+            and pp.year = year(current_date)
         left join
             {{ ref("stg_deadpool__people") }} pe
             on pp.people_id = pe.id
@@ -20,7 +20,7 @@ with
         join
             {{ ref("stg_deadpool__draft_order") }} do
             on pl.id = do.player_id
-            and do.year = 2024
+            and do.year = year(current_date)
             and do.draft_order is not null
         group by 1, 2, 3, 4, 5
     )

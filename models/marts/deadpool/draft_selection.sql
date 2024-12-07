@@ -10,6 +10,6 @@ left join {{ ref("score_twenty_four") }} sc on pl.id = sc.id
 left join
     {{ ref("stg_deadpool__draft_order") }} do
     on pl.id = do.player_id
-    and do.year = 2024
+    and do.year = year(current_date)
     and do.draft_order is not null
 order by score desc
