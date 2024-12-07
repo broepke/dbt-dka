@@ -14,6 +14,7 @@ with
     q_four as ({{ score_quarterly("2024-10-01", "2024") }})
 
 select
+    b.id,
     b.player,
     b.email,
     b.year,

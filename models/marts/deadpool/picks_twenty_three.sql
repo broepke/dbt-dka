@@ -1,21 +1,24 @@
 with source as (
 
-    select * from {{ ref('stg_deadpool__picks') }}
+    select pp.player_id, pe.*, pp.timestamp
+    from {{ ref('stg_deadpool__people') }} pe
+    join {{ ref('stg_deadpool__player_picks') }} pp
+    on pe.id = pp.people_id and pp.year = 2023
     
 ),
 
 transform as (
 
     select
-        pi.name,
-        pi.birth_date,
-        pi.death_date,
-        pi.age,
+        pe.name,
+        pe.birth_date,
+        pe.death_date,
+        pe.age,
         concat(pl.first_name || ' ' || pl.last_name) as player,
-        pi.timestamp as draft_date
+        pe.timestamp as draft_date
     from {{ ref('stg_deadpool__players') }} pl
-    join source as pi on pl.id = pi.picked_by
-    where pi.year = 2023
+    join source as pe 
+    on pl.id = pe.player_id
 
 )
 

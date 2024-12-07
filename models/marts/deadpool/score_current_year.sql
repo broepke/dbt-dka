@@ -1,22 +1,25 @@
-{{ config(materialized='table') }}
+{% set current_year = modules.datetime.datetime.now().year %}
 
 with
     base_scoring as (select * from {{ ref("int_deadpool__score_base_scoring") }}),
 
-    first_blood as ({{ score_first_last_blood("min", "2024") }}),
+    first_blood as ({{ score_first_last_blood("min", current_year) }}),
 
-    last_blood as ({{ score_first_last_blood("max", "2024") }}),
+    last_blood as ({{ score_first_last_blood("max", current_year) }}),
 
-    q_one as ({{ score_quarterly("2024-01-01", "2024") }}),
+    q_one as ({{ score_quarterly(current_year ~ "-01-01", current_year) }}),
 
-    q_two as ({{ score_quarterly("2024-04-01", "2024") }}),
+    q_two as ({{ score_quarterly(current_year ~ "-04-01", current_year) }}),
 
-    q_three as ({{ score_quarterly("2024-07-01", "2024") }}),
+    q_three as ({{ score_quarterly(current_year ~ "-07-01", current_year) }}),
 
-    q_four as ({{ score_quarterly("2024-10-01", "2024") }})
+    q_four as ({{ score_quarterly(current_year ~ "-10-01", current_year) }})
 
 select
-    b.id as player_id,
+    b.id,
+    b.player,
+    b.email,
+    b.year,
     to_decimal(b.score)
     + to_decimal(coalesce(f.score, 0))
     + to_decimal(coalesce(l.score, 0))
@@ -38,5 +41,5 @@ left join q_one qo on b.id = qo.id
 left join q_two qtw on b.id = qtw.id
 left join q_three qth on b.id = qth.id
 left join q_four qf on b.id = qf.id
-where year = 2024
+where year = {{ current_year }}
 order by total desc
