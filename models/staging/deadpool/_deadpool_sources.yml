@@ -7,7 +7,6 @@ sources:
     schema: prod
     tables:
       - name: players
-      - name: picks
       - name: people
       - name: player_picks
       - name: draft_order
