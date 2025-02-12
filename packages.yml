@@ -1,3 +1,1 @@
 packages:
-  - package: fivetran/github
-    version: [">=0.7.0", "<0.8.0"]
