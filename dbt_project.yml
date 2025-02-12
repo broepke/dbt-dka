@@ -19,12 +19,6 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
-vars:
-  github_source:
-    github_database: fivetran
-    # github_schema: github
-  github__using_repo_team: false
-
 seeds:
   data_knows_all:
     +enabled: true
@@ -37,28 +31,16 @@ models:
         +enabled: true
         +materialized: view
         +database: deadpool
-      google_analytics:
-        +enabled: true
-        +materialized: view
-        +database: analytics
       hubspot:
           +enabled: true
           +materialized: view
           +database: analytics
-      nndb:
-          +enabled: true
-          +materialized: table
-          +database: deadpool
       notion:
           +enabled: true
           +materialized: view
           +database: analytics
       pivots:
           +enabled: true
-          +materialized: view
-          +database: analytics
-      stripe:
-          +enabled: false
           +materialized: view
           +database: analytics
       quickbooks:
@@ -70,15 +52,7 @@ models:
         +enabled: true
         +materialized: view
         +database: staging
-      google_analytics:
-        +enabled: true
-        +materialized: view
-        +database: staging
       hubspot:
-        +enabled: true
-        +materialized: view
-        +database: staging
-      nndb:
         +enabled: true
         +materialized: view
         +database: staging
@@ -88,10 +62,6 @@ models:
         +database: staging
       pivots:
         +enabled: true
-        +materialized: view
-        +database: staging
-      stripe:
-        +enabled: false
         +materialized: view
         +database: staging
       quickbooks:
@@ -107,13 +77,3 @@ models:
         +enabled: true
         +materialized: view
         +database: staging
-      nndb:
-        +enabled: true
-        +materialized: view
-        +database: staging
-  github_source:
-    +enabled: false
-    +database: staging
-  github:
-    +enabled: false
-    +database: analytics
